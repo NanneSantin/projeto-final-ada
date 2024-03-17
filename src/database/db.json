@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "7dd2",
+      "email": "elaine.santin@email.com",
+      "password": "123456",
+      "acceptTerms": true,
+      "name": "Elaine Stefani Santin"
+    },
+    {
+      "id": "d79e",
+      "email": "maria@email.com",
+      "password": "123456",
+      "acceptTerms": true,
+      "name": "Maria Luz"
+    },
+    {
+      "id": "0274",
+      "email": "luiz@email.com",
+      "password": "123456",
+      "acceptTerms": true,
+      "name": "Luiz Felipe Bini"
+    }
+  ]
+}

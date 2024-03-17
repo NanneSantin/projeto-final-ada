@@ -1,0 +1,81 @@
+.container_form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.container_form label {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.field_input {
+    width: 400px;
+    padding: 12px 10px;
+
+    font-size: 16px;
+
+    background-color: #F4F4FF;
+    border-style: none;
+
+    margin-bottom: 8px;
+}
+
+.field_input::placeholder {
+    color: rgb(9, 9, 55, .4);
+}
+
+.termos {
+    width: 400px;
+    margin-bottom: 8px;
+}
+
+.termos label {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #6251DD;
+}
+
+.termos_checkbox {
+    margin-right: 5px;
+}
+
+.container_btn {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+button {
+    width: 300px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+.btn_main {
+    background-color: #EF6B4A;
+    color: #FFF;
+    border: none;
+}
+
+.btn_other {
+    background-color: #FFF;
+    color: #6251DD;
+    border: 1px solid #6251DD;
+}
+
+.advice {
+    height: 100px;
+    max-width: 700px;
+    overflow: auto;
+
+    text-align: justify;
+    font-weight: 300;
+}
