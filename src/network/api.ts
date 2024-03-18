@@ -6,6 +6,6 @@ const client = axios.create({
 
 const adviceApi = axios.create({
     baseURL: 'https://api.adviceslip.com'
-})
+});
 
 export { client, adviceApi };

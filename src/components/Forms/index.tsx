@@ -1,6 +1,8 @@
 import { Field, Form, FormikHelpers, FormikProvider, useFormik } from 'formik';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { useAuth } from '../../context/AuthContext';
 import { adviceApi, client } from '../../network/api';
 import styles from './Forms.module.css';
 
@@ -15,6 +17,10 @@ export default function Forms() {
     const [showRegister, setShowRegister] = useState<Boolean>(false);
     const [advice, setAdvice] = useState<String>('');
 
+    const { login } = useAuth();
+
+    const navigate = useNavigate();
+
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('Digite um email válido').required('O email é obrigatório'),
         password: Yup.string().required('A senha é obrigatória'),
@@ -25,7 +31,6 @@ export default function Forms() {
     const handleSubmit = async (values: IFormValues, actions: FormikHelpers<IFormValues>) => {
         try {
             if (showRegister) {
-
                 const userExist = await client.get(`/users?email=${values.email}`);
 
                 if (userExist.data.length > 0) {
@@ -34,19 +39,11 @@ export default function Forms() {
                 }
 
                 await client.post('/users', values);
-                console.log('Usuário cadastrado com sucesso!');
-                alert('Usuário cadastrado!')
+                await login({ email: values.email, password: values.password });
+                navigate('/');
             } else {
-                const userExist = (await client.get(`/users?email=${values.email}`)).data;
-                const validatePassword = values.password === userExist[0].password;
-
-                if (userExist.length < 1 || !validatePassword) {
-                    alert('Usuário ou senha inválido!')
-                    return
-                }
-
-                console.log('Usuário logado com sucesso');
-                alert('Usuário logado!')
+                await login(values);
+                navigate('/');
             }
         } catch (error) {
             console.error('Erro ao cadastrar usuário:', error)

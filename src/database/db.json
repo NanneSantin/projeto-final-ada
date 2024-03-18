@@ -20,6 +20,13 @@
       "password": "123456",
       "acceptTerms": true,
       "name": "Luiz Felipe Bini"
+    },
+    {
+      "id": "c580",
+      "email": "antonella@email.com",
+      "password": "123456",
+      "acceptTerms": true,
+      "name": "Antonella"
     }
   ]
 }
