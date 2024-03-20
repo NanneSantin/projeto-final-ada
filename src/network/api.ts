@@ -8,4 +8,8 @@ const adviceApi = axios.create({
     baseURL: 'https://api.adviceslip.com'
 });
 
-export { client, adviceApi };
+const booksApi = axios.create({
+    baseURL: 'https://www.googleapis.com/books/v1/volumes'
+})
+
+export { client, adviceApi, booksApi };
