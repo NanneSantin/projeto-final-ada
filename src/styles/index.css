@@ -44,12 +44,3 @@
 
   cursor: pointer;
 }
-
-.main {
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 40px 0;
-  flex-wrap: wrap;
-}

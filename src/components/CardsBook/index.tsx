@@ -9,6 +9,8 @@ const CardBook = ({ id, title, author, image, price }: Book) => {
         currency: 'BRL'
     });
 
+    const newPrice = price === 0 ? 'Indisponível' : currencyFormat.format(price)
+
     return (
         <div className={styles.container_card} id={id}>
             <div>
@@ -19,7 +21,7 @@ const CardBook = ({ id, title, author, image, price }: Book) => {
             <img className={styles.img_book} src={image} alt="Capa do livro" width='170px' />
 
             <div className={styles.buy}>
-                <h3 className={styles.price}>{currencyFormat.format(price)}</h3>
+                <h3 className={styles.price}>{newPrice}</h3>
                 <AddCart />
             </div>
         </div>

@@ -3,31 +3,37 @@ import Header from "../../components/Header"
 import CardBook from "../../components/CardsBook";
 import Book from "../../Interfaces/book";
 import { booksApi } from "../../network/api";
+import styles from './Home.module.css';
 
 export default function Home() {
 
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [books, setBooks] = useState<Book[]>([]);
+    const [showLoadMore, setShowLoadMore] = useState<boolean>(true);
 
     const loadBooks = async () => {
         try {
             const response = await booksApi.get('/', {
                 params: {
-                    q: 'inauthor:random',
-                    startIndex: 0,
-                    maxResults: 30
+                    q: 'programming',
+                    startIndex: books.length,
+                    maxResults: 24
                 }
             });
 
-            const formattedBooks = response.data.items.map((item: any) => ({
+            const newBooks = response.data.items.map((item: any) => ({
                 id: item.id,
                 title: item.volumeInfo.title,
                 author: item.volumeInfo.authors ? item.volumeInfo.authors[0] : 'Autor não disponível',
-                image: item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.smallThumbnail : '',
-                price: item.saleInfo.listPrice ? item.saleInfo.listPrice.amount : 'Preço não disponível'
+                image: item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.smallThumbnail : './src/assets/images/No_image_available.svg',
+                price: item.saleInfo.listPrice ? item.saleInfo.listPrice.amount : 0
             }));
 
-            setBooks(formattedBooks);
+            if (newBooks.length < 4) {
+                setShowLoadMore(false);
+            }
+
+            setBooks([...books, ...newBooks]);
         } catch (error) {
             console.log('Não foi possível carregar os livros', error)
         }
@@ -36,6 +42,10 @@ export default function Home() {
     useEffect(() => {
         loadBooks();
     }, []);
+
+    const handleLoadMore = () => {
+        loadBooks();
+    }
 
     const handleSearch = (term: string) => {
         setSearchTerm(term);
@@ -48,9 +58,9 @@ export default function Home() {
     );
 
     return (
-        <div>
+        <div className={styles.container_main}>
             <Header onSearch={handleSearch}></Header>
-            <div className='main'>
+            <div className={styles.main}>
                 {filteredBooks.map((book) => (
                     <CardBook
                         id={book.id}
@@ -63,6 +73,7 @@ export default function Home() {
                     </CardBook>
                 ))}
             </div>
+            {showLoadMore && <button type='button' onClick={handleLoadMore} className={styles.btn_see_more}>Veja mais</button>}
         </div>
     )
 }
