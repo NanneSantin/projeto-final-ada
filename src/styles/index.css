@@ -43,4 +43,19 @@
   justify-content: center;
 
   cursor: pointer;
+  position: relative;
+}
+
+.item-count {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 50%;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  padding: 3px 6px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
 }

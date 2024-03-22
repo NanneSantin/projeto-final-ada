@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import PrivateRoute from './PrivateRoute';
 import Details from '../pages/BooksDetails';
+import { ShoppingCartProvider } from '../context/ShoppingCartContext';
 
 const router = createBrowserRouter([
     {
@@ -14,7 +15,9 @@ const router = createBrowserRouter([
         path: '/',
         element: <AuthProvider>
             <PrivateRoute>
-                <Home />
+                <ShoppingCartProvider>
+                    <Home />
+                </ShoppingCartProvider>
             </PrivateRoute>
         </AuthProvider>
     },
@@ -22,7 +25,9 @@ const router = createBrowserRouter([
         path: '/details',
         element: <AuthProvider>
             <PrivateRoute>
-                <Details />
+                <ShoppingCartProvider>
+                    <Details />
+                </ShoppingCartProvider>
             </PrivateRoute>
         </AuthProvider>
     },

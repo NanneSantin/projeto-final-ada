@@ -1,14 +1,15 @@
-import { useNavigate } from 'react-router-dom';
+import styles from './AddCart.module.css'
+import { useShoppingCartContext } from '../../context/ShoppingCartContext';
 
 export default function AddCart() {
-    const navigate = useNavigate();
+    const { addToCart } = useShoppingCartContext();
 
     const handleAddShopCart = () => {
-        navigate('/');
+        addToCart();
     }
 
     return (
-        <div onClick={handleAddShopCart} title='Carrinho de Compras'>
+        <div className={styles.carrinho} onClick={handleAddShopCart} title='Add ao carrinho de compras'>
             <img src='src/assets/images/addCart.svg' alt='Carrinho de Compras' width={'38px'} />
         </div>
     )

@@ -25,13 +25,13 @@ const CardBook = ({ book }: Props) => {
     const newPrice = book.price === 0 ? 'Indisponível' : currencyFormat.format(book.price)
 
     return (
-        <div className={styles.container_card} id={book.id} onClick={handleBookDetail}>
+        <div className={styles.container_card} id={book.id}>
             <div>
                 <h2>{book.title}</h2>
                 <p>{book.author}</p>
             </div>
 
-            <img className={styles.img_book} src={book.image} alt="Capa do livro" width='170px' />
+            <img className={styles.img_book} onClick={handleBookDetail} src={book.image} alt="Capa do livro" width='170px' />
 
             <div className={styles.buy}>
                 <h3 className={styles.price}>{newPrice}</h3>

@@ -122,8 +122,7 @@
     height: 50px;
 }
 
-.links a:hover,
-.cart:hover {
+.links a:hover {
     transform: scale(1.05);
     opacity: 0.8;
 }

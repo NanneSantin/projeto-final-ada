@@ -2,7 +2,7 @@ import styles from './BooksDetails.module.css';
 import Header from '../../components/Header';
 import { useNavigate } from 'react-router-dom';
 import useBooksDetails from '../../hooks/useBooksDetails';
-import ShoppingCart from '../../components/ShoppingCartButton';
+import AddCart from '../../components/AddCartButton';
 
 export default function Details() {
     const { currentBookDetail } = useBooksDetails();
@@ -40,9 +40,7 @@ export default function Details() {
                 </div>
             </div>
             <div className={styles.links}>
-                <div className={styles.cart}>
-                    <ShoppingCart />
-                </div>
+                <AddCart />
                 <a title='Pré Visualização do Livro' href={currentBookDetail.previewLink} target='_blank'>Preview Livro</a>
                 <a title='Comprar Ebook pela Google Play' href={currentBookDetail.buyLink} target='_blank'>Comprar Direto</a>
             </div>

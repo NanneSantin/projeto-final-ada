@@ -3,18 +3,22 @@ import Logo from '../Logo';
 import LogoutButton from '../LogoutButton';
 import ShoppingCart from '../ShoppingCartButton';
 import { ChangeEvent } from 'react';
+import { useShoppingCartContext } from '../../context/ShoppingCartContext';
 
 interface IHeaderProps {
     onSearch?: (term: string) => void;
 }
 
 const Header: React.FC<IHeaderProps> = ({ onSearch }) => {
+    const { cartItemCount } = useShoppingCartContext();
+
     const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
         const term = event.target.value;
         if (onSearch) {
             onSearch(term);
         }
     };
+
 
     return (
         <header>
@@ -34,7 +38,7 @@ const Header: React.FC<IHeaderProps> = ({ onSearch }) => {
             )}
             <div className={styles.container_icons}>
                 <LogoutButton />
-                <ShoppingCart />
+                <ShoppingCart itemCount={cartItemCount} />
             </div>
         </header>
     );
