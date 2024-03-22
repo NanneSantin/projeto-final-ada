@@ -22,41 +22,8 @@ export const useAuth = () => {
     return context;
 };
 
-// export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-//     const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-//     const login = async (values: IValidationLogin) => {
-//         try {
-//             const userExist = (await client.get(`/users?email=${values.email}`)).data;
-//             const validatePassword = values.password === userExist[0].password;
-
-//             if (userExist.length < 1 || !validatePassword) {
-//                 alert('Usuário ou senha inválido!')
-//                 return
-//             }
-
-//             setIsAuthenticated(true);
-//         } catch (error) {
-//             console.log('Não foi possível realizar o login: ', error);
-//         }
-//     };
-
-//     const logout = () => {
-//         setIsAuthenticated(false);
-//     };
-
-//     return (
-//         <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
-//             {children}
-//         </AuthContext.Provider>
-//     );
-
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(() => {
-
-        const storedToken = localStorage.getItem('authToken');
-        return !!storedToken;
-    });
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const login = async (values: IValidationLogin) => {
         try {
@@ -68,7 +35,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
                 return
             }
 
-            localStorage.setItem('authToken', 'token_de_autenticacao');
             setIsAuthenticated(true);
         } catch (error) {
             console.log('Não foi possível realizar o login: ', error);
@@ -76,7 +42,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     };
 
     const logout = () => {
-        localStorage.removeItem('authToken');
         setIsAuthenticated(false);
     };
 
