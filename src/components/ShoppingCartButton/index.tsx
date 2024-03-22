@@ -8,7 +8,7 @@ export default function ShoppingCart() {
     }
 
     return (
-        <div className='icon' onClick={handleShopCart} title='Carrinho de CompraS'>
+        <div className='icon' onClick={handleShopCart} title='Add Carrinho de Compras'>
             <img src='src/assets/images/shopping-cart.svg' alt='Carrinho de Compras' width={'20px'} />
         </div>
     )

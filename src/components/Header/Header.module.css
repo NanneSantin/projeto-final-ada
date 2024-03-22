@@ -46,3 +46,8 @@ header {
     display: flex;
     justify-content: space-between;
 }
+
+.title {
+    text-align: center;
+    color: rgb(9, 9, 55, .8);
+}

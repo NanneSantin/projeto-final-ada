@@ -13,6 +13,11 @@
     border: 1px solid rgb(9, 9, 55, 0.1);
 }
 
+.container_card:hover {
+    transform: scale(1.03);
+    opacity: 0.8;
+}
+
 .container_card h2 {
     font-size: 20px;
     text-align: center;

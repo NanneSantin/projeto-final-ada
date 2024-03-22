@@ -21,13 +21,19 @@ export default function Home() {
                 }
             });
 
-            const newBooks = response.data.items.map((item: any) => ({
-                id: item.id,
-                title: item.volumeInfo.title,
-                author: item.volumeInfo.authors ? item.volumeInfo.authors[0] : 'Autor não disponível',
-                image: item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.smallThumbnail : './src/assets/images/No_image_available.svg',
-                price: item.saleInfo.listPrice ? item.saleInfo.listPrice.amount : 0
-            }));
+            const newBooks = response.data.items.map((item: any) => (
+                {
+                    id: item.id,
+                    title: item.volumeInfo.title,
+                    author: item.volumeInfo.authors ? item.volumeInfo.authors[0] : 'Autor não disponível',
+                    image: item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.smallThumbnail : './src/assets/images/content.jpeg',
+                    price: item.saleInfo.listPrice ? item.saleInfo.listPrice.amount : 0,
+                    publisher: item.volumeInfo.publisher ? item.volumeInfo.publisher : 'Publicação não disponível',
+                    description: item.volumeInfo.description ? item.volumeInfo.description : 'Descrição não disponível',
+                    pageCount: item.volumeInfo.pageCount ? item.volumeInfo.pageCount : 0,
+                    previewLink: item.volumeInfo.previewLink ? item.volumeInfo.previewLink : 'Preview não disponível',
+                    buyLink: item.saleInfo.buyLink ? item.saleInfo.buyLink : 'Indisponível no momento!',
+                }));
 
             if (newBooks.length < 4) {
                 setShowLoadMore(false);
@@ -63,11 +69,7 @@ export default function Home() {
             <div className={styles.main}>
                 {filteredBooks.map((book) => (
                     <CardBook
-                        id={book.id}
-                        title={book.title}
-                        author={book.author}
-                        image={book.image}
-                        price={book.price}
+                        book={book}
                         key={book.id}
                     >
                     </CardBook>

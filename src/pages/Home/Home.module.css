@@ -27,5 +27,6 @@
 }
 
 .btn_see_more:hover {
-    transform: translateY(2px);
+    transform: scale(1.03);
+    opacity: 0.8;
 }

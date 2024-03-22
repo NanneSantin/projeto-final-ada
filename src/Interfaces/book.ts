@@ -3,5 +3,10 @@ export default interface Book {
     title: string,
     author: string,
     image: string,
-    price: number
+    price: number,
+    publisher: string,
+    description: string,
+    pageCount: number,
+    previewLink: string,
+    buyLink: string
 }
