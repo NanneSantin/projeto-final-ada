@@ -27,6 +27,13 @@
       "password": "123456",
       "acceptTerms": true,
       "name": "Antonella"
+    },
+    {
+      "id": "cfea",
+      "email": "antonio@email.com",
+      "password": "123456",
+      "acceptTerms": true,
+      "name": "Antonio"
     }
   ]
 }
