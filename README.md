@@ -96,7 +96,7 @@ Instale as dependências
 Inicie o Json Server para simular o back end
 
 ```bash
-  npx --watch json-server ./src/database/db.json
+  npm start
 ```
 
 Inicie o projeto
