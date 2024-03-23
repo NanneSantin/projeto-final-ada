@@ -9,20 +9,25 @@
     ],
     "module": "ESNext",
     "skipLibCheck": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noEmit": true,
     "jsx": "react-jsx",
+    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
-    "downlevelIteration": true,
-    "outDir": "dist" // Adicionando a opção outDir
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
   ]
 }
